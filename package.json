@@ -1,0 +1,26 @@
+{
+  "name": "hangar",
+  "version": "0.0.1",
+  "description": "A lightweight application cache powered by leveldb",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "pretest": "jshint --config .jshintrc ./lib/ ./test/",
+    "test": "node test/*"
+  },
+  "repository": "git@github.com:CondeNast/hangar.git",
+  "authors": [
+    "Paul Fryzel <pfryzel@condenast.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "leveldown": "0.6.1",
+    "levelup": "0.10.0",
+    "level-ttl": "0.2.0",
+    "q": "0.9.6"
+  },
+  "devDependencies": {
+    "jshint": "2.1.4",
+    "tape": "1.0.4"
+  }
+}
