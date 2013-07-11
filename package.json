@@ -9,14 +9,11 @@
     "test": "node test/*"
   },
   "repository": "git@github.com:CondeNast/hangar.git",
-  "authors": [
-    "Paul Fryzel <pfryzel@condenast.com>"
-  ],
   "license": "MIT",
   "dependencies": {
-    "leveldown": "0.6.1",
+    "leveldown": "0.6.2",
     "levelup": "0.10.0",
-    "level-ttl": "0.2.0",
+    "level-ttl": "0.3.0",
     "q": "0.9.6"
   },
   "devDependencies": {
