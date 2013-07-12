@@ -1,3 +1,10 @@
+2013.07.12, Version 1.0.1 (Stable)
+
+* lib: Fix constructor default checks
+
+* project: Add travis-ci
+
+
 2013.07.11, Version 1.0.0 (Stable)
 
 * project: Initial release
