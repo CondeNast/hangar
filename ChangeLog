@@ -1,3 +1,14 @@
+2013.07.15, Version 1.0.2 (Stable)
+
+* project: Update start() documentation and provide a usage example
+
+* leveldb: Set internal db immediately and queue reads/writes
+
+* level-sublevel: Add as explicit dependency
+
+* level-ttl: Upgrade to 0.4.0
+
+
 2013.07.12, Version 1.0.1 (Stable)
 
 * lib: Fix constructor default checks
