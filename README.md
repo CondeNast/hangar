@@ -1,10 +1,32 @@
 # hangar
 
-A lightweight application cache powered by leveldb. [![Build Status](https://secure.travis-ci.org/condenast/hangar.png?branch=master)](http://travis-ci.org/condenast/hangar)
+A lightweight application cache powered by leveldb.
 
 ## Install
 
     npm install hangar --save
+
+## Usage
+
+```javascript
+var Hangar = require('hangar');
+var h = new Hangar({ location: './db' });
+
+h.start(function (err) {
+  if (err) console.error(err);
+});
+
+h.set('foo', { k: 'v' }, function (err) {
+  if (err) console.error(err);
+  h.get('foo', function (err, value) {
+    console.log(value);
+  });
+});
+
+h.stop(function (err) {
+  if (err) console.error(err);
+});
+```
 
 ## API
 
@@ -19,10 +41,11 @@ var h = new Hangar();
 ```
 **options:**
 
-- ttl - The time-to-live for cache entries. default: 4 hours
-- checkFrequency - The frequency to check TTL values. default: 5 minutes
-- keyEncoding - The encoding to use for the keys. default: utf8 (string)
-- valueEncoding - The encoding to use for the values. default: json
+- location - The location for the backing datastore.
+- [ttl] - The time-to-live for cache entries. default: 4 hours
+- [checkFrequency] - The frequency to check TTL values. default: 5 minutes
+- [keyEncoding] - The encoding to use for the keys. default: utf8 (string)
+- [valueEncoding] - The encoding to use for the values. default: json
 
 **Parameters**
 
@@ -30,7 +53,7 @@ var h = new Hangar();
 
 
 ### start(\[callback\])
-Start and open a connection to the cache
+Start and open a connection to the cache. Note, `start()` is an asynchronous operation. Whether you provide an error-handling callback or not, all read/write operations will be queued until the backing datastore is fully opened.
 
 Example:
 
