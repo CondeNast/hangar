@@ -1,6 +1,6 @@
 # hangar
 
-A lightweight application cache powered by leveldb.
+A lightweight application cache powered by leveldb. [![Build Status](https://secure.travis-ci.org/CondeNast/hangar.png?branch=master)](http://travis-ci.org/CondeNast/hangar)
 
 ## Install
 
