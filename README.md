@@ -1,6 +1,10 @@
 # hangar
 
-A lightweight application cache powered by leveldb. [![Build Status](https://secure.travis-ci.org/CondeNast/hangar.png?branch=master)](http://travis-ci.org/CondeNast/hangar)
+A lightweight Node.js application cache powered by LevelDB.
+
+[![Build Status](https://secure.travis-ci.org/CondeNast/hangar.png?branch=master)](http://travis-ci.org/CondeNast/hangar)
+
+[![NPM](https://nodei.co/npm/hangar.png?compact=true)](https://nodei.co/npm/hangar/)
 
 ## Install
 
