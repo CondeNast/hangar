@@ -34,18 +34,18 @@ h.stop(function (err) {
 
 ## API
 
-### Hangar(\[options\])
+### Hangar(options)
 Create a hangar instance
 
 Example:
 
 ```javascript
 var Hangar = require('hangar');
-var h = new Hangar();
+var h = new Hangar(options);
 ```
 **options:**
 
-- location - The location for the backing datastore.
+- location - The location for the backing datastore. note: location is required
 - [ttl] - The time-to-live for cache entries. default: 4 hours
 - [checkFrequency] - The frequency to check TTL values. default: 5 minutes
 - [keyEncoding] - The encoding to use for the keys. default: utf8 (string)
@@ -228,6 +228,14 @@ h.delMany(['foo', 'bar'], function (err) {
 **keys** *Array* - The keys of the entries to remove
 
 **[callback]** *Function* - The callback will receive an error as the first parameter if all of the keys cannot be removed
+
+## Tests
+
+Linting is done through [jshint](https://npmjs.org/package/jshint) with settings from `./.jshintrc`. This happens automatically as part of the pretest script when running tests.
+
+Tests are written with [tape](https://npmjs.org/package/tape) and can be run through the npm test script.
+
+    $ npm test
 
 ## License
 
