@@ -1,3 +1,14 @@
+2013.07.25, Version 1.0.3 (Stable)
+
+* project: Add tests documentation
+
+* project: Add travis and nodeico badges to readme
+
+* levelup: Upgrade to 0.12.0
+
+* level-sublevel: Upgrade to 4.8.0
+
+
 2013.07.15, Version 1.0.2 (Stable)
 
 * project: Update start() documentation and provide a usage example
