@@ -6,6 +6,8 @@ A lightweight Node.js application cache powered by LevelDB.
 
 [![NPM](https://nodei.co/npm/hangar.png?compact=true)](https://nodei.co/npm/hangar/)
 
+[![Dependencies](https://david-dm.org/condenast/hangar.png)](https://david-dm.org/condenast/hangar)
+
 ## Install
 
     npm install hangar --save
