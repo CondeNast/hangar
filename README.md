@@ -3,10 +3,9 @@
 A lightweight Node.js application cache powered by LevelDB.
 
 [![Build Status](https://secure.travis-ci.org/CondeNast/hangar.png?branch=master)](http://travis-ci.org/CondeNast/hangar)
+[![Dependencies](https://david-dm.org/condenast/hangar.png)](https://david-dm.org/condenast/hangar)
 
 [![NPM](https://nodei.co/npm/hangar.png?compact=true)](https://nodei.co/npm/hangar/)
-
-[![Dependencies](https://david-dm.org/condenast/hangar.png)](https://david-dm.org/condenast/hangar)
 
 ## Install
 
