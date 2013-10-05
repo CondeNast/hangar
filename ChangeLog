@@ -1,3 +1,18 @@
+2013.10.05, Version 1.1.0 (Stable)
+
+* lib: Add setObject()
+
+* leveldown - Upgrade to 0.9.1
+
+* levelup - Upgrade to 0.17.0
+
+* level-sublevel - Upgrade to 5.1.1
+
+* level-ttl - Upgrade to 0.4.1
+
+* q - Upgrade to 0.9.7
+
+
 2013.07.25, Version 1.0.3 (Stable)
 
 * project: Add tests documentation
