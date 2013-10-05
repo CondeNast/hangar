@@ -111,6 +111,31 @@ test('Set/Get many values from hangar', function (t) {
   });
 });
 
+test('Set/Get object value from hangar', function (t) {
+  t.plan(3);
+
+  var obj = {
+      'k1': 'v1',
+      'k2': 'v2',
+      'k3': 'v3',
+  };
+
+  var keys = ['k1', 'k2', 'k3'];
+
+  var hangar = new Hangar(_options(Date.now()));
+  hangar.start(function (err) {
+    hangar.setObject(obj, function (err) {
+      t.notOk(err, '#setObject() should not have errors');
+      hangar.getMany(keys, function (err, values) {
+        t.notOk(err, '#getMany() should not have errors');
+        t.equal(keys.length, values.length, 'lengths should be equal');
+        hangar.drop();
+      });
+    });
+  });
+});
+
+
 test('Set/Delete/Get many values from hangar', function (t) {
   t.plan(3);
 
