@@ -184,12 +184,32 @@ h.setMany(['k1', 'k2'], ['v1', 'v2'], function (err) {
 
 **Parameters**
 
-**key** *String* - The keys to set
+**key** *Array* - The keys to set
 
-**value** *Object* - The values to set
+**value** *Array* - The values to set
 
 **[callback]** *Function* - The callback will receive an error as the first parameter if all of the keys cannot be set
 
+### setObject(obj, \[callback\])
+Populate the cache with properties of an object literal
+
+Example:
+
+```javascript
+var multi = { 'k1': 'v1', 'k2': 'v2' }
+
+h.setObject(multi, function (err) {
+  h.getMany(['k1', 'k2'], function (values) {
+    console.log(values); //=> ['v1', 'v2']
+  });
+});
+```
+
+**Parameters**
+
+**obj** *Object* - The key/values to set in object literal form
+
+**[callback]** *Function* - The callback will receive an error as the first parameter if all of the keys cannot be set
 
 ### del(key, \[callback\])
 Remove an entry from the cache
