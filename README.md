@@ -27,14 +27,22 @@ h.set('foo', { k: 'v' }, function (err) {
     console.log(value);
   });
 });
-
-h.stop(function (err) {
-  if (err) console.error(err);
-});
 ```
 
 ## API
 
+  * <a href="#hangar_start"><code><b>hangar.start()</b></code></a>
+  * <a href="#hangar_stop"><code><b>hangar.stop()</b></code></a>
+  * <a href="#hangar_drop"><code><b>hangar.drop()</b></code></a>
+  * <a href="#hangar_get"><code><b>hangar.get()</b></code></a>
+  * <a href="#hangar_getMany"><code><b>hangar.getMany()</b></code></a>
+  * <a href="#hangar_set"><code><b>hangar.set()</b></code></a>
+  * <a href="#hangar_setMany"><code><b>hangar.setMany()</b></code></a>
+  * <a href="#hangar_setObject"><code><b>hangar.setObject()</b></code></a>
+  * <a href="#hangar_del"><code><b>hangar.del()</b></code></a>
+  * <a href="#hangar_delMany"><code><b>hangar.delMany()</b></code></a>
+
+---
 ### Hangar(options)
 Create a hangar instance
 
@@ -57,6 +65,8 @@ var h = new Hangar(options);
 **[options]** *Object* - A set of options to use in the cache
 
 
+---
+<a name="hangar_start"></a>
 ### start(\[callback\])
 Start and open a connection to the cache. Note, `start()` is an asynchronous operation. Whether you provide an error-handling callback or not, all read/write operations will be queued until the backing datastore is fully opened.
 
@@ -73,6 +83,8 @@ h.start(function (err) {
 **[callback]** *Function* - The callback will receive an error as the first parameter if the cache cannot be started
 
 
+---
+<a name="hangar_stop"></a>
 ### stop(\[callback\])
 Stop and close the connection to the cache
 
@@ -89,6 +101,8 @@ h.stop(function (err) {
 **[callback]** *Function* - The callback will receive an error as the first parameter if the cache cannot be started
 
 
+---
+<a name="hangar_drop"></a>
 ### drop(\[callback\])
 Stop, close, and destroy the cache contents
 
@@ -105,6 +119,8 @@ h.drop(function (err) {
 **[callback]** *Function* - The callback will receive an error as the first parameter if the cache cannot be started
 
 
+---
+<a name="hangar_get"></a>
 ### get(key, \[callback\])
 Retrieve an entry from the cache
 
@@ -126,6 +142,8 @@ h.get('foo', function (err, value) {
 **[callback]** *Function* - The callback will receive an error as the first parameter if value cannot be found, or the value as the second paramater if it was found
 
 
+---
+<a name="hangar_getMany"></a>
 ### getMany(keys, \[callback\])
 Retrieve entries from the cache. Order of key index will be maintained.
 
@@ -147,6 +165,8 @@ h.get(['foo', 'bar'], function (err, values) {
 **[callback]** *Function* - The callback will receive an error as the first parameter if all of the values cannot be found, or all of the values as the second paramater if they were found
 
 
+---
+<a name="hangar_set"></a>
 ### set(key, value, \[callback\])
 Set an entry in the cache
 
@@ -169,6 +189,8 @@ h.set('foo', 'bar', function (err) {
 **[callback]** *Function* - The callback will receive an error as the first parameter if the key cannot be set
 
 
+---
+<a name="hangar_setMany"></a>
 ### setMany(key, value, \[callback\])
 Set multiple entries in the cache. Order of key and value index will be maintained.
 
@@ -190,6 +212,9 @@ h.setMany(['k1', 'k2'], ['v1', 'v2'], function (err) {
 
 **[callback]** *Function* - The callback will receive an error as the first parameter if all of the keys cannot be set
 
+
+---
+<a name="hangar_setObject"></a>
 ### setObject(obj, \[callback\])
 Populate the cache with properties of an object literal
 
@@ -211,6 +236,9 @@ h.setObject(multi, function (err) {
 
 **[callback]** *Function* - The callback will receive an error as the first parameter if all of the keys cannot be set
 
+
+---
+<a name="hangar_del"></a>
 ### del(key, \[callback\])
 Remove an entry from the cache
 
@@ -231,6 +259,8 @@ h.del('foo', function (err) {
 **[callback]** *Function* - The callback will receive an error as the first parameter if all of the keys cannot be removed
 
 
+---
+<a name="hangar_delMany"></a>
 ### delMany(keys, \[callback\])
 Remove multiple entries from the cache
 
@@ -250,6 +280,8 @@ h.delMany(['foo', 'bar'], function (err) {
 
 **[callback]** *Function* - The callback will receive an error as the first parameter if all of the keys cannot be removed
 
+
+---
 ## Tests
 
 Linting is done through [jshint](https://npmjs.org/package/jshint) with settings from `./.jshintrc`. This happens automatically as part of the pretest script when running tests.
