@@ -11,15 +11,15 @@
   "repository": "git@github.com:CondeNast/hangar.git",
   "license": "MIT",
   "dependencies": {
-    "leveldown": "0.9.1",
-    "levelup": "0.17.0",
-    "level-sublevel": "5.1.1",
-    "level-ttl": "0.4.1",
-    "q": "0.9.7"
+    "bluebird": "2.3.0",
+    "level-sublevel": "6.2.2",
+    "level-ttl": "0.6.1",
+    "leveldown": "0.10.2",
+    "levelup": "0.18.6"
   },
   "devDependencies": {
-    "jshint": "2.1.11",
-    "tape": "1.1.1"
+    "jshint": "2.5.3",
+    "tape": "2.14.0"
   },
   "keywords": [
     "cache",
