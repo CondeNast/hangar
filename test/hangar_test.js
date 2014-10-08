@@ -41,7 +41,7 @@ test('Get notfound value from hangar', function (t) {
 });
 
 test('Set/Get value from hangar', function (t) {
-  t.plan(3);
+  t.plan(4);
 
   var obj = {
     key: 'k1',
@@ -50,8 +50,9 @@ test('Set/Get value from hangar', function (t) {
 
   var hangar = new Hangar(_options(Date.now()));
   hangar.start(function (err) {
-    hangar.set(obj.key, obj.value, function (err) {
+    hangar.set(obj.key, obj.value, function (err, value) {
       t.notOk(err, '#set() should not have errors');
+      t.equal(obj.value, value, 'value should equal initial value');
       hangar.get(obj.key, function (err, value) {
         t.notOk(err, '#get() should not have errors');
         t.equal(obj.value, value, 'value should equal initial value');
