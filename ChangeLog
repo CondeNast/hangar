@@ -1,3 +1,16 @@
+2014.10.08, Version 3.0.0 (Stable)
+
+* set: Return put value in callback
+
+* setMany: Return put values in callback
+
+* setObject: Return put object values in callback
+
+* project: Remove travis support for node 0.11.x
+
+* project: Update dependencies
+
+
 2014.09.03, Version 2.1.0 (Stable)
 
 * project: Support cacheSize option
