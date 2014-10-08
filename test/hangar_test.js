@@ -86,7 +86,7 @@ test('Set/Delete/Get value from hangar', function(t) {
 });
 
 test('Set/Get many values from hangar', function(t) {
-  t.plan(3);
+  t.plan(4);
 
   var obj = {
     keys: [
@@ -101,8 +101,9 @@ test('Set/Get many values from hangar', function(t) {
 
   var hangar = new Hangar(_options(Date.now()));
   hangar.start(function(err) {
-    hangar.setMany(obj.keys, obj.values, function(err) {
+    hangar.setMany(obj.keys, obj.values, function(err, values) {
       t.notOk(err, '#setMany() should not have errors');
+      t.equal(obj.values.length, values.length, 'lengths should be equal');
       hangar.getMany(obj.keys, function(err, values) {
         t.notOk(err, '#getMany() should not have errors');
         t.equal(obj.values.length, values.length, 'lengths should be equal');
@@ -113,7 +114,7 @@ test('Set/Get many values from hangar', function(t) {
 });
 
 test('Set/Get object value from hangar', function(t) {
-  t.plan(3);
+  t.plan(4);
 
   var obj = {
       'k1': 'v1',
@@ -125,8 +126,9 @@ test('Set/Get object value from hangar', function(t) {
 
   var hangar = new Hangar(_options(Date.now()));
   hangar.start(function(err) {
-    hangar.setObject(obj, function(err) {
+    hangar.setObject(obj, function(err, values) {
       t.notOk(err, '#setObject() should not have errors');
+      t.equal(keys.length, values.length, 'lengths should be equal');
       hangar.getMany(keys, function(err, values) {
         t.notOk(err, '#getMany() should not have errors');
         t.equal(keys.length, values.length, 'lengths should be equal');
