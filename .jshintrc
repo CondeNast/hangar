@@ -21,6 +21,7 @@
     "before",
     "beforeEach",
     "after",
-    "afterEach"
+    "afterEach",
+    "-Promise"
   ]
 }
