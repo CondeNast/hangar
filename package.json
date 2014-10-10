@@ -1,6 +1,6 @@
 {
   "name": "hangar",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "A lightweight Node.js application cache powered by LevelDB",
   "main": "index.js",
   "scripts": {
