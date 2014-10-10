@@ -14,15 +14,15 @@ A lightweight Node.js application cache powered by LevelDB.
 
 ```javascript
 var Hangar = require('hangar');
-var h = new Hangar({ location: './db' });
+var cache = new Hangar({ location: './cache' });
 
-h.start(function (err) {
+cache.start(function(err) {
   if (err) console.error(err);
 });
 
-h.set('foo', { k: 'v' }, function (err) {
+cache.set('foo', { k: 'v' }, function(err) {
   if (err) console.error(err);
-  h.get('foo', function (err, value) {
+  cache.get('foo', function(err, value) {
     console.log(value);
   });
 });
@@ -49,13 +49,14 @@ Example:
 
 ```javascript
 var Hangar = require('hangar');
-var h = new Hangar(options);
+var cache = new Hangar(options);
 ```
 **options:**
 
 - location - The location for the backing datastore. note: location is required
 - [ttl] - The time-to-live for cache entries. default: 4 hours
 - [checkFrequency] - The frequency to check TTL values. default: 5 minutes
+- [cacheSize] - The size of the in-memory LRU cache: default: 8MB
 - [keyEncoding] - The encoding to use for the keys. default: utf8 (string)
 - [valueEncoding] - The encoding to use for the values. default: json
 
@@ -72,7 +73,7 @@ Start and open a connection to the cache. Note, `start()` is an asynchronous ope
 Example:
 
 ```javascript
-h.start(function (err) {
+cache.start(function(err) {
   console.error(err);
 });
 ```
@@ -90,7 +91,7 @@ Stop and close the connection to the cache
 Example:
 
 ```javascript
-h.stop(function (err) {
+cache.stop(function(err) {
   console.error(err);
 });
 ```
@@ -108,7 +109,7 @@ Stop, close, and destroy the cache contents
 Example:
 
 ```javascript
-h.drop(function (err) {
+cache.drop(function(err) {
   console.error(err);
 });
 ```
@@ -126,7 +127,7 @@ Retrieve an entry from the cache
 Example:
 
 ```javascript
-h.get('foo', function (err, value) {
+cache.get('foo', function(err, value) {
   if (err) {
     console.error(err);
   }
@@ -149,7 +150,7 @@ Retrieve entries from the cache. Order of key index will be maintained.
 Example:
 
 ```javascript
-h.get(['foo', 'bar'], function (err, values) {
+cache.get(['foo', 'bar'], function(err, values) {
   if (err) {
     console.error(err);
   }
@@ -172,7 +173,7 @@ Set an entry in the cache
 Example:
 
 ```javascript
-h.set('foo', 'bar', function (err) {
+cache.set('foo', 'bar', function(err) {
   if (err) {
     console.error(err);
   }
@@ -185,7 +186,7 @@ h.set('foo', 'bar', function (err) {
 
 **value** *Object* - The value to set
 
-**[callback]** *Function* - The callback will receive an error as the first parameter if the key cannot be set
+**[callback]** *Function* - The callback will receive an error as the first parameter if the key cannot be set or the value that was set as the second parameter (function((null, value) {...})
 
 
 ---
@@ -196,8 +197,8 @@ Set multiple entries in the cache. Order of key and value index will be maintain
 Example:
 
 ```javascript
-h.setMany(['k1', 'k2'], ['v1', 'v2'], function (err) {
-  h.getMany(['k1', 'k2'], function (values) {
+cache.setMany(['k1', 'k2'], ['v1', 'v2'], function(err) {
+  cache.getMany(['k1', 'k2'], function(values) {
     console.log(values); //=> ['v1', 'v2']
   });
 });
@@ -209,7 +210,8 @@ h.setMany(['k1', 'k2'], ['v1', 'v2'], function (err) {
 
 **value** *Array* - The values to set
 
-**[callback]** *Function* - The callback will receive an error as the first parameter if all of the keys cannot be set
+**[callback]** *Function* - The callback will receive an error as the first parameter if all of the keys cannot be set or the values that were set as the second parameter (function((null, values) {...})
+
 
 
 ---
@@ -222,8 +224,8 @@ Example:
 ```javascript
 var multi = { 'k1': 'v1', 'k2': 'v2' }
 
-h.setObject(multi, function (err) {
-  h.getMany(['k1', 'k2'], function (values) {
+cache.setObject(multi, function(err) {
+  cache.getMany(['k1', 'k2'], function(values) {
     console.log(values); //=> ['v1', 'v2']
   });
 });
@@ -233,7 +235,8 @@ h.setObject(multi, function (err) {
 
 **obj** *Object* - The key/values to set in object literal form
 
-**[callback]** *Function* - The callback will receive an error as the first parameter if all of the keys cannot be set
+**[callback]** *Function* - The callback will receive an error as the first parameter if all of the keys cannot be set or the object values that were set as the second parameter (function((null, object.values) {...})
+
 
 
 ---
@@ -244,7 +247,7 @@ Remove an entry from the cache
 Example:
 
 ```javascript
-h.del('foo', function (err) {
+cache.del('foo', function(err) {
   if (err) {
     console.error(err);
   }
@@ -266,7 +269,7 @@ Remove multiple entries from the cache
 Example:
 
 ```javascript
-h.delMany(['foo', 'bar'], function (err) {
+cache.delMany(['foo', 'bar'], function(err) {
   if (err) {
     console.error(err);
   }
