@@ -1,26 +1,26 @@
 {
-  "name": "hangar",
+  "name": "@condenast/hangar",
   "version": "3.1.0",
   "description": "A lightweight Node.js application cache powered by LevelDB",
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "pretest": "jshint --config .jshintrc ./lib/ ./test/",
+    "pretest": "eslint -c .eslintrc .",
     "test": "node test/*"
   },
   "repository": "git@github.com:CondeNast/hangar.git",
   "license": "MIT",
   "dependencies": {
-    "bluebird": "2.3.5",
-    "leveldown": "0.10.2",
-    "level-sublevel": "6.2.2",
-    "level-ttl": "2.1.0",
-    "levelup": "0.19.0",
-    "mkdirp": "0.5.0"
+    "bluebird": "3.1.5",
+    "leveldown": "1.4.4",
+    "level-sublevel": "6.5.4",
+    "level-ttl": "3.1.0",
+    "levelup": "1.3.1",
+    "mkdirp": "0.5.1"
   },
   "devDependencies": {
-    "jshint": "2.5.5",
-    "tape": "3.0.0"
+    "eslint": "1.10.3",
+    "tape": "4.4.0"
   },
   "keywords": [
     "cache",
